@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Limonatura</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Limonatura Logo">
+            <h1>Limonatura</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Descubre la belleza de lo natural</h2>
+            <p>Explora nuestra colección única de joyería, carteras, vestimenta y calzado inspirados en la naturaleza.</p>
+            <a href="{% url 'catalogo' %}" class="btn">Ver Catálogo</a>
+        </section>
+
+        <section class="categorias">
+            <h2>Categorías Destacadas</h2>
+            <div class="categoria">
+                <img src="{% static 'images/joyeria.jpg' %}" alt="Joyería">
+                <h3>Joyería de Autor</h3>
+                <p>Piezas únicas hechas por artesanos locales.</p>
+            </div>
+            <div class="categoria">
+                <img src="{% static 'images/carteras.jpg' %}" alt="Carteras">
+                <h3>Carteras</h3>
+                <p>Diseños exclusivos con materiales sostenibles.</p>
+            </div>
+            <div class="categoria">
+                <img src="{% static 'images/vestimenta.jpg' %}" alt="Vestimenta">
+                <h3>Vestimenta</h3>
+                <p>Ropa cómoda y ecológica para todas las estaciones.</p>
+            </div>
+            <div class="categoria">
+                <img src="{% static 'images/calzado.jpg' %}" alt="Calzado">
+                <h3>Calzado</h3>
+                <p>Zapatos que combinan estilo y confort.</p>
+            </div>
+        </section>
+
+        <section class="catalogo">
+            <h2>Nuestros Productos</h2>
+            <div class="productos">
+                <!-- Ejemplo de un producto dinámico -->
+                {% for producto in productos %}
+                <div class="producto">
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>{{ producto.descripcion }}</p>
+                    <p><strong>${{ producto.precio }}</strong></p>
+                    <a href="{% url 'carrito_agregar' producto.id %}" class="btn">Agregar al Carrito</a>
+                </div>
+                {% empty %}
+                <p>No hay productos disponibles en este momento.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div class="contacto">
+            <h2>Contacto</h2>
+            <p>¿Tienes preguntas? Contáctanos:</p>
+            <form action="{% url 'enviar_mensaje' %}" method="post">
+                {% csrf_token %}
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </div>
+        <p>Limonatura © 2024 - Inspirado en la naturaleza</p>
+    </footer>
+</body>
+</html>

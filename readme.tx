@@ -1,0 +1,86 @@
+# Limonatura
+
+**Limonatura** es una plataforma de comercio electrónico diseñada para facilitar la gestión de productos, ventas, usuarios y reportes, con una interfaz amigable inspirada en la naturaleza.
+
+---
+
+## **Características**
+
+1. **Catálogo de productos**: Lista interactiva de productos con imágenes, precios y opción para añadir al carrito.
+2. **Carrito de compras**: Gestión de los productos seleccionados con opciones para actualizar cantidades.
+3. **Checkout**: Proceso de pago con diferentes métodos.
+4. **Panel de control (Dashboard)**:
+   - Gestión de productos (añadir, editar y eliminar).
+   - Gestión de usuarios.
+   - Gestión de ventas.
+   - Generación de reportes (productos, usuarios y ventas).
+
+---
+
+## **Instalación**
+
+### **Requisitos previos**
+- Python 3.12 o superior.
+- PostgreSQL instalado y configurado.
+- Entorno virtual (`venv`).
+
+---
+
+### **Pasos de instalación**
+
+1. **Clonar el repositorio**:
+
+   ```bash
+   git clone https://github.com/usuario/limonatura.git
+   cd limonatura
+
+
+2.- **Crear y activar el entorno virtual**:
+
+python -m venv env
+# En Windows
+env\Scripts\activate
+# En Mac/Linux
+source env/bin/activate
+
+
+3.-**Instalar las dependencias. Asegúrate de tener un archivo requirements.txt actualizado. 
+Puedes generarlo automáticamente ejecutando**:
+
+pip freeze > requirements.txt
+
+
+4.-**Luego instala las dependencias con**:
+
+pip install -r requirements.txt
+
+
+5.- **Configurar la base de datos**
+# Cambia esto según tu configuración(en este caso lo hice con postgres):
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'limonatura_db',
+        'USER': 'postgres', # Cambia esto según tu configuración
+        'PASSWORD': 'admin',  # Cambia esto según tu configuración
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+6.- **Realizar las migraciones**:
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+7.- ** SUPERUSUARIO: **
+nombre: admin
+clave: 1234 (si no funiona creenlo)
+
+8.- **Iniciar el servidor de desarrollo:**
+
+python manage.py runserver
+
+

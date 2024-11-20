@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Limonatura</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Proceso de Pago</h1>
+    </header>
+    <main>
+        <h2>Resumen de la Compra</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, item in carrito.items %}
+                <tr>
+                    <td>{{ item.nombre }}</td>
+                    <td>${{ item.precio|floatformat:2 }}</td>
+                    <td>{{ item.cantidad }}</td>
+                    <td>${{ item.subtotal|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><strong>Total a Pagar:</strong> ${{ total|floatformat:2 }}</p>
+
+        <h2>Selecciona el Método de Pago</h2>
+        <form action="{% url 'procesar_pago' %}" method="post">
+            {% csrf_token %}
+            <label>
+                <input type="radio" name="metodo_pago" value="PayPal" required> PayPal
+            </label><br>
+            <label>
+                <input type="radio" name="metodo_pago" value="Transferencia" required> Transferencia Bancaria
+            </label><br>
+            <label>
+                <input type="radio" name="metodo_pago" value="Efectivo" required> Efectivo (Retiro en Tienda)
+            </label><br><br>
+            <button type="submit" class="btn">Confirmar Pago</button>
+        </form>
+    </main>
+</body>
+</html>

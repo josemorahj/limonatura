@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito de Compras - Limonatura</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Carrito de Compras</h1>
+    </header>
+    <main>
+        {% if carrito %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, item in carrito.items %}
+                <tr>
+                    <td>{{ item.nombre }}</td>
+                    <td>${{ item.precio|floatformat:2 }}</td>
+                    <td>
+                        <form action="{% url 'actualizar_carrito' key %}" method="post">
+                            {% csrf_token %}
+                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1">
+                            <button type="submit">Actualizar</button>
+                        </form>
+                    </td>
+                    <td>${{ item.subtotal|floatformat:2 }}</td>
+                    <td>
+                        <a href="{% url 'eliminar_del_carrito' key %}" class="btn eliminar">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><strong>Total:</strong> ${{ total|floatformat:2 }}</p>
+        <a href="{% url 'checkout' %}" class="btn">Proceder al Pago</a>
+        {% else %}
+        <p>Tu carrito está vacío.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

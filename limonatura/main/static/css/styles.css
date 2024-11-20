@@ -1,0 +1,297 @@
+/* ===================== */
+/* Variables de Color */
+/* ===================== */
+:root {
+    --color-primario: #4CAF50; /* Verde principal */
+    --color-secundario: #8BC34A; /* Verde claro */
+    --color-texto: #333; /* Gris oscuro */
+    --fondo: #f9f9f9; /* Fondo general */
+    --color-boton-peligro: #e74c3c; /* Rojo para acciones de eliminar */
+    --color-transparente: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+    --color-texto-oscuro: #222; /* Texto oscuro */
+    --sombra-texto: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+}
+
+/* ===================== */
+/* Reset General */
+/* ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../imagenes/fondo_naturaleza.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: var(--fondo); /* Color de respaldo */
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* ===================== */
+/* Header */
+/* ===================== */
+header {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img {
+    max-width: 50px;
+    vertical-align: middle;
+}
+
+header .logo h1 {
+    display: inline-block;
+    margin: 0;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: var(--color-secundario);
+}
+
+/* ===================== */
+/* Hero Section */
+/* ===================== */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: var(--color-transparente); /* Fondo translúcido */
+    margin: 1rem auto;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero h2 {
+    font-size: 2rem;
+    color: var(--color-primario);
+    text-shadow: var(--sombra-texto);
+}
+
+.hero p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--color-texto-oscuro);
+}
+
+.hero .btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero .btn:hover {
+    background-color: var(--color-secundario);
+}
+
+/* ===================== */
+/* Categorías y Productos */
+/* ===================== */
+.categorias, .productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.categoria, .producto {
+    background-color: var(--color-transparente);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--color-texto-oscuro);
+}
+
+.categoria:hover, .producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.categoria img, .producto img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* ===================== */
+/* Tablas (Dashboard y Carrito) */
+/* ===================== */
+table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    margin: 2rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    color: var(--color-texto-oscuro);
+}
+
+table th, table td {
+    text-align: center;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+table td {
+    background-color: var(--color-transparente);
+}
+
+/* ===================== */
+/* Formularios (Login y Registro) */
+/* ===================== */
+form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--color-transparente);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--color-texto-oscuro);
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: var(--color-secundario);
+}
+
+/* ===================== */
+/* Footer */
+/* ===================== */
+footer {
+    background-color: var(--color-primario);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+
+.dashboard {
+    padding: 2rem;
+    text-align: center;
+}
+
+.dashboard-secciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.dashboard-card {
+    background-color: var(--color-transparente);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: var(--color-texto-oscuro);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-card h3 {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.dashboard-card p {
+    color: var(--color-texto);
+}

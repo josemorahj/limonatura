@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Limonatura</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Limonatura Logo">
+            <h1>Limonatura</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="login.html" class="active">Iniciar Sesión</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="login">
+            <h2>Iniciar Sesión</h2>
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="rut">RUT:</label>
+                    <input type="text" id="rut" name="rut" placeholder="Ej: 12345678-9" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+                </div>
+                <div class="form-group">
+                    <label for="captcha">CAPTCHA:</label>
+                    <div class="captcha">
+                        <img src="{% static 'images/captcha.png' %}" alt="Captcha">
+                        <input type="text" id="captcha" name="captcha" placeholder="Escribe el texto de la imagen" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Ingresar</button>
+                </div>
+                <p class="registro">¿No tienes cuenta? <a href="/registro/">Regístrate aquí</a></p>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Limonatura © 2024 - Inspirado en la naturaleza</p>
+    </footer>
+</body>
+</html>

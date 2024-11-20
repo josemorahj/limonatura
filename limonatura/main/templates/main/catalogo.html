@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Limonatura</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Limonatura Logo">
+            <h1>Limonatura</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'catalogo' %}" class="active">Catálogo</a></li>
+                <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Catálogo de Productos</h2>
+        <div class="productos">
+            {% if productos %}
+                {% for producto in productos %}
+                    <div class="producto">
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                        <h3>{{ producto.nombre }}</h3>
+                        <p>{{ producto.descripcion }}</p>
+                        <p><strong>${{ producto.precio }}</strong></p>
+                        <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn">Agregar al Carrito</a>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay productos disponibles en este momento.</p>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <p>Limonatura © 2024 - Inspirado en la naturaleza</p>
+    </footer>
+</body>
+</html>

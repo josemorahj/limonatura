@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Limonatura</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Limonatura Logo">
+            <h1>Limonatura - Dashboard</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                <li><a href="{% url 'ver_carrito' %}">Carrito</a></li>
+                <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="dashboard">
+            <h2>Panel de Control</h2>
+            <div class="dashboard-secciones">
+                <a href="{% url 'gestionar_productos' %}">Gestión de Productos</a>
+                    <h3>Gestión de Productos</h3>
+                    <p>Agregar, editar o eliminar productos del catálogo.</p>
+                </a>
+                <a href="{% url 'gestionar_usuarios' %}">Gestión de Usuarios</a>
+                    <h3>Gestión de Usuarios</h3>
+                    <p>Administrar cuentas de usuarios y permisos.</p>
+                </a>
+                <li><a href="{% url 'gestionar_ventas' %}">Gestión de Ventas</a></li>
+                    <h3>Gestión de Ventas</h3>
+                    <p>Revisar y gestionar las ventas realizadas.</p>
+                </a>
+                <li><a href="{% url 'generar_reportes' %}">Generar Reportes</a></li>
+                    <h3>Reportes</h3>
+                    <p>Generar reportes de usuarios, ventas y productos.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Limonatura © 2024 - Inspirado en la naturaleza</p>
+    </footer>
+</body>
+</html>
